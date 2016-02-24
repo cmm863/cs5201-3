@@ -5,6 +5,8 @@
 CMakeCache.txt
 CMakeFiles/*
 2
+3
+driver
 a.out
 
 *.dSYM/
