@@ -26,7 +26,6 @@ int main(int argc, char* argv[])
   int dimensionSize;
   vector<Vector<int> > vectors;
   Vector<int> * tempVector;
-  Vector<int> testVector;
 
   // Start going through file
   if (inputFile.is_open())
@@ -38,12 +37,18 @@ int main(int argc, char* argv[])
     // Load all vectors
     for(int i = 0; i < dimensionSize; i++)
     {
+      // Allocate space
       tempVector = new Vector<int>(dimensionSize);
 
+      // Load vector into vectors
       inputFile >> *tempVector;
       vectors.push_back(*tempVector);
+
+      // Clean up
       delete tempVector;
     }
+
+    // For each vector
     for(int i = 0; i < vectors.size(); i++)
     {
       cout << "i: " << i << endl;
