@@ -51,7 +51,7 @@
 //////////////////////////////////////////////////////////////////////
 /// @fn friend Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 /// @brief Adds two Vectors together.
-/// @pre Vectors need to be of the same size.
+/// @pre Vectors need to be of the same size. T type must have += operator.
 /// @post Returns sum of lhs and rhs
 /// @param1 Vector 1 to be added
 /// @param2 Vector 2 to be added
