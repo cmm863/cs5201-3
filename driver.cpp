@@ -58,6 +58,8 @@ int main(int argc, char* argv[])
     cout << vectors[0] + vectors[1] << endl;
     cout << "Subtraction: " << endl;
     cout << vectors[0] - vectors[1] << endl;
+    cout << "Multiplication: " << endl;
+    cout << 4*vectors[0] << endl;
   }
   else // If file isn't open
   {

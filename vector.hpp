@@ -64,7 +64,7 @@ Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
     cerr << "Sizes not equal for + operator." << endl;
   }
   Vector<T> ret(lhs);
-  for(unsigned long i = 0; i < lhs.m_size; i++)
+  for(unsigned long i = 0; i < ret.m_size; i++)
   {
     ret.m_elements[i] += rhs.m_elements[i];
   }
@@ -80,9 +80,21 @@ Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs)
     cerr << "Sizes not equal for - operator." << endl;
   }
   Vector<T> ret(lhs);
-  for(unsigned long i = 0; i < lhs.m_size; i++)
+  for(unsigned long i = 0; i < ret.m_size; i++)
   {
     ret.m_elements[i] -= rhs.m_elements[i];
+  }
+
+  return ret;
+}
+
+template <typename T>
+Vector<T> operator *(double c, const Vector<T>& rhs)
+{
+  Vector<T> ret(rhs);
+  for(unsigned long i = 0; i < ret.m_size; i++)
+  {
+    ret.m_elements[i] *= c;
   }
 
   return ret;

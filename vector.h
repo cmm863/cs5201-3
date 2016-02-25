@@ -65,7 +65,17 @@
 /// @post Returns difference of lhs and rhs
 /// @param1 Vector 1 to be added
 /// @param2 Vector 2 to be added
-/// @return Sum of lhs and rhs
+/// @return Difference of lhs and rhs
+//////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////
+/// @fn friend Vector<T> operator *(double c, const Vector<T>& rhs)
+/// @brief Multiplication c by each element of rhs.
+/// @pre T type must have *= operator.
+/// @post Returns rhs with each element multiplied by c
+/// @param1 Vector 1 to be added
+/// @param2 Vector 2 to be added
+/// @return Rhs with each element multiplied by c
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
@@ -106,6 +116,9 @@ template <typename T>
 Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs);
 
 template <typename T>
+Vector<T> operator *(double c, const Vector<T>& rhs);
+
+template <typename T>
 ostream& operator <<(ostream& out, const Vector<T>& rhs);
 
 template <typename T>
@@ -130,6 +143,7 @@ public:
   // Operators
   friend Vector<T> operator + <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend Vector<T> operator - <>(const Vector<T>& lhs, const Vector<T>& rhs);
+  friend Vector<T> operator * <>(double c, const Vector<T>& rhs);
   friend ostream& operator << <>(ostream& out, const Vector& rhs);
   friend istream& operator >> <>(istream& in, Vector& rhs);
 
