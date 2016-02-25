@@ -49,6 +49,15 @@
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
+/// @fn T Vector<T>::operator [](int index) const
+/// @brief Returns a returns element at passed index.
+/// @pre Index needs to be less than the number of elements.
+/// @post Returns a returns element at passed index.
+/// @param1 Index of the term to be returned.
+/// @return Returns a returns element at passed index.
+//////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////
 /// @fn friend Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 /// @brief Adds two Vectors together.
 /// @pre Vectors need to be of the same size. T type must have += operator.
@@ -141,6 +150,7 @@ public:
   // Helpers
 
   // Operators
+  T operator [](int index) const;
   friend Vector<T> operator + <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend Vector<T> operator - <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend Vector<T> operator * <>(double c, const Vector<T>& rhs);

@@ -57,6 +57,17 @@ unsigned long Vector<T>::capacity() const
 }
 
 template <typename T>
+T Vector<T>::operator [](int index) const
+{
+  if(this->m_size <= index)
+  {
+    cerr << "Out of bounds on [] operator." << endl;
+  }
+
+  return this->m_elements[index];
+}
+
+template <typename T>
 Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 {
   if(lhs.m_size != rhs.m_size)
