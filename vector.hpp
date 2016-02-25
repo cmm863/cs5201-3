@@ -16,7 +16,6 @@ Vector<T>::Vector()
   this->m_capacity = 0;
   this->m_size = 0;
   this->m_elements = nullptr;
-  cout << m_elements << " default" << endl;
 }
 
 template <typename T>
@@ -25,7 +24,6 @@ Vector<T>::Vector(const Vector<T> &other)
   this->m_capacity = other.m_capacity;
   this->m_size = other.m_size;
   this->m_elements = new (nothrow) T[this->m_capacity];
-  cout << this->m_elements << " copy" << endl;
   for(int i = 0; i < this->m_size; i++)
   {
     this->m_elements[i] = other.m_elements[i];
@@ -38,13 +36,11 @@ Vector<T>::Vector(unsigned long size)
   this->m_capacity = size;
   this->m_size = 0;
   this->m_elements = new (nothrow) T[this->m_capacity];
-  cout << m_elements << " long" << endl;
 }
 
 template <typename T>
 Vector<T>::~Vector()
 {
-  cout << this->m_elements << " destructor" << endl;
   delete[] this->m_elements;
 }
 
@@ -100,9 +96,7 @@ istream& operator >>(istream& in, Vector<T> &rhs)
     in >> element;
     rhs.m_elements[i] = atoi(element.c_str());
     rhs.m_size++;
-    cout << rhs.m_elements[i] << " ";
   }
-  cout << endl;
   return in;
 }
 

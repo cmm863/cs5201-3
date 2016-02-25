@@ -31,11 +31,13 @@ int main(int argc, char* argv[])
   // Start going through file
   if (inputFile.is_open())
   {
+    // Take in the number of vectors & convert
     inputFile >> dimensionSizeString;
     dimensionSize = atoi(dimensionSizeString.c_str());
+
+    // Load all vectors
     for(int i = 0; i < dimensionSize; i++)
     {
-      cout << "i: " << i << endl;
       tempVector = new Vector<int>(dimensionSize);
 
       inputFile >> *tempVector;
