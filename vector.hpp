@@ -57,20 +57,6 @@ unsigned long Vector<T>::capacity() const
 }
 
 template <typename T>
-void Vector<T>::add(const T& e)
-{
-  if(this->m_size >= this->m_capacity) {
-    cout << "Vector at capacity." << endl;
-    return;
-  }
-  this->m_elements[this->m_size] = e;
-  cout << this->m_elements[this->m_size] << endl;
-  this->m_size++;
-
-  return;
-}
-
-template <typename T>
 Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 {
   return lhs;

@@ -49,11 +49,13 @@
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
-/// @fn void Vector<T>::add(T e)
-/// @brief Adds the element to the calling object.
-/// @pre None.
-/// @post The element passed is stored in the calling object.
-/// @param1 The element to be added to the calling vector.
+/// @fn friend Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
+/// @brief Adds two Vectors together.
+/// @pre Vectors need to be of the same size.
+/// @post Returns sum of lhs and rhs
+/// @param1 Vector 1 to be added
+/// @param2 Vector 2 to be added
+/// @return Sum of lhs and rhs
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
@@ -111,7 +113,6 @@ public:
   unsigned long capacity() const;
 
   // Helpers
-  void add(const T& e);
 
   // Operators
   friend Vector<T> operator + <>(const Vector<T>& lhs, const Vector<T>& rhs);
