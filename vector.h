@@ -59,6 +59,16 @@
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
+/// @fn friend Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs)
+/// @brief Subtracts rhs vector from lhs.
+/// @pre Vectors need to be of the same size. T type must have -= operator.
+/// @post Returns difference of lhs and rhs
+/// @param1 Vector 1 to be added
+/// @param2 Vector 2 to be added
+/// @return Sum of lhs and rhs
+//////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////
 /// @fn ostream& operator <<(ostream& out, const Vector<T>& rhs)
 /// @brief Outputs rhs to ostream.
 /// @pre None.
@@ -93,6 +103,9 @@ template <typename T>
 Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs);
 
 template <typename T>
+Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs);
+
+template <typename T>
 ostream& operator <<(ostream& out, const Vector<T>& rhs);
 
 template <typename T>
@@ -116,6 +129,7 @@ public:
 
   // Operators
   friend Vector<T> operator + <>(const Vector<T>& lhs, const Vector<T>& rhs);
+  friend Vector<T> operator - <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend ostream& operator << <>(ostream& out, const Vector& rhs);
   friend istream& operator >> <>(istream& in, Vector& rhs);
 

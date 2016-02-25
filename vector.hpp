@@ -73,6 +73,23 @@ Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 }
 
 template <typename T>
+Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs)
+{
+  if(lhs.m_size != rhs.m_size)
+  {
+    cerr << "Sizes not equal for - operator." << endl;
+  }
+  Vector<T> ret(lhs);
+  for(unsigned long i = 0; i < lhs.m_size; i++)
+  {
+    ret.m_elements[i] -= rhs.m_elements[i];
+  }
+
+  return ret;
+}
+
+
+template <typename T>
 ostream& operator <<(ostream& out, const Vector<T> &rhs)
 {
   for(unsigned long i = 0; i < rhs.m_size; i++)
