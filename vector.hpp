@@ -9,23 +9,42 @@
 
 #include "vector.h"
 
+
 template <typename T>
 Vector<T>::Vector()
 {
+  this->m_capacity = 0;
   this->m_size = 0;
   this->m_elements = nullptr;
+  cout << m_elements << " default" << endl;
 }
 
 template <typename T>
-Vector<T>::Vector(int size)
+Vector<T>::Vector(const Vector<T> &other)
 {
-  this->m_size = size;
-  this->m_elements = new (nothrow) T[this->m_size];
+  this->m_capacity = other.m_capacity;
+  this->m_size = other.m_size;
+  this->m_elements = new (nothrow) T[this->m_capacity];
+  cout << this->m_elements << " copy" << endl;
+  for(int i = 0; i < this->m_size; i++)
+  {
+    this->m_elements[i] = other.m_elements[i];
+  }
+}
+
+template <typename T>
+Vector<T>::Vector(unsigned long size)
+{
+  this->m_capacity = size;
+  this->m_size = 0;
+  this->m_elements = new (nothrow) T[this->m_capacity];
+  cout << m_elements << " long" << endl;
 }
 
 template <typename T>
 Vector<T>::~Vector()
 {
+  cout << this->m_elements << " destructor" << endl;
   delete[] this->m_elements;
 }
 
@@ -36,18 +55,54 @@ unsigned long Vector<T>::size() const
 }
 
 template <typename T>
+unsigned long Vector<T>::capacity() const
+{
+  return this->m_capacity;
+}
+
+template <typename T>
+void Vector<T>::add(const T& e)
+{
+  if(this->m_size >= this->m_capacity) {
+    cout << "Vector at capacity." << endl;
+    return;
+  }
+  this->m_elements[this->m_size] = e;
+  cout << this->m_elements[this->m_size] << endl;
+  this->m_size++;
+
+  return;
+}
+
+template <typename T>
+Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
+{
+  return lhs;
+}
+
+template <typename T>
 ostream& operator <<(ostream& out, const Vector<T> &rhs)
 {
-  out << rhs.m_size;
+  for(unsigned long i = 0; i < rhs.m_size; i++)
+  {
+    out << rhs.m_elements[i] << " ";
+  }
+
   return out;
 }
 
 template <typename T>
 istream& operator >>(istream& in, Vector<T> &rhs)
 {
-  string size;
-  in >> size;
-  rhs.m_size = atoi(size.c_str());
+  string element;
+  for(unsigned long i = 0; i < rhs.m_capacity; i++)
+  {
+    in >> element;
+    rhs.m_elements[i] = atoi(element.c_str());
+    rhs.m_size++;
+    cout << rhs.m_elements[i] << " ";
+  }
+  cout << endl;
   return in;
 }
 

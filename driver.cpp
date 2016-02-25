@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "vector.h"
 
 using namespace std;
@@ -21,17 +22,31 @@ int main(int argc, char* argv[])
 
   // Declare variables
   ifstream inputFile(argv[1]);
-  string dimensionSize;
-  Vector<double> v;
+  string dimensionSizeString;
+  int dimensionSize;
+  vector<Vector<int> > vectors;
+  Vector<int> * tempVector;
+  Vector<int> testVector;
 
   // Start going through file
   if (inputFile.is_open())
   {
-    inputFile >> dimensionSize;
-    cout << v << endl;
-    inputFile >> v;
-    cout << v << endl;
-    cout << dimensionSize << endl;
+    inputFile >> dimensionSizeString;
+    dimensionSize = atoi(dimensionSizeString.c_str());
+    for(int i = 0; i < dimensionSize; i++)
+    {
+      cout << "i: " << i << endl;
+      tempVector = new Vector<int>(dimensionSize);
+
+      inputFile >> *tempVector;
+      vectors.push_back(*tempVector);
+      delete tempVector;
+    }
+    for(int i = 0; i < vectors.size(); i++)
+    {
+      cout << "i: " << i << endl;
+      cout << vectors[i] << endl;
+    }
   }
   else // If file isn't open
   {
@@ -39,6 +54,5 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  cout << "Hello, World!" << endl;
   return 0;
 }

@@ -8,7 +8,8 @@ CMakeFiles/*
 3
 driver
 a.out
-
+driver.o
+depend
 *.dSYM/
 
 ## File-based project format:
