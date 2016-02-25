@@ -72,9 +72,19 @@
 /// @brief Subtracts rhs vector from lhs.
 /// @pre Vectors need to be of the same size. T type must have -= operator.
 /// @post Returns difference of lhs and rhs
-/// @param1 Vector 1 to be added
-/// @param2 Vector 2 to be added
+/// @param1 Vector 1 to be subracted from
+/// @param2 Vector 2 to be subracted
 /// @return Difference of lhs and rhs
+//////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////
+/// @fn friend T operator *(const Vector<T>& lhs, const Vector<T>& rhs)
+/// @brief Dot product of rhs and lhs.
+/// @pre T needs to have += operator and * operator.
+/// @post Return dot product of rhs & lhs.
+/// @param1 Vector 1
+/// @param2 Vector 2
+/// @return Dot of rhs from lhs
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
@@ -82,8 +92,8 @@
 /// @brief Multiplication c by each element of rhs.
 /// @pre T type must have *= operator.
 /// @post Returns rhs with each element multiplied by c
-/// @param1 Vector 1 to be added
-/// @param2 Vector 2 to be added
+/// @param1 constant c to be multiplied
+/// @param2 Vector to be scaled
 /// @return Rhs with each element multiplied by c
 //////////////////////////////////////////////////////////////////////
 
@@ -125,6 +135,9 @@ template <typename T>
 Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs);
 
 template <typename T>
+T operator *(const Vector<T>& lhs, const Vector<T>& rhs);
+
+template <typename T>
 Vector<T> operator *(double c, const Vector<T>& rhs);
 
 template <typename T>
@@ -153,6 +166,7 @@ public:
   T operator [](int index) const;
   friend Vector<T> operator + <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend Vector<T> operator - <>(const Vector<T>& lhs, const Vector<T>& rhs);
+  friend T operator * <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend Vector<T> operator * <>(double c, const Vector<T>& rhs);
   friend ostream& operator << <>(ostream& out, const Vector& rhs);
   friend istream& operator >> <>(istream& in, Vector& rhs);

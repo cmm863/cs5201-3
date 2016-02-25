@@ -100,6 +100,18 @@ Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs)
 }
 
 template <typename T>
+T operator *(const Vector<T>& lhs, const Vector<T>& rhs)
+{
+  T ret = 0;
+  for(unsigned long i = 0; i < lhs.m_size; i++)
+  {
+    ret += lhs.m_elements[i] * rhs.m_elements[i];
+  }
+
+  return ret;
+}
+
+template <typename T>
 Vector<T> operator *(double c, const Vector<T>& rhs)
 {
   Vector<T> ret(rhs);

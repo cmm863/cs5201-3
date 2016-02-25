@@ -62,6 +62,8 @@ int main(int argc, char* argv[])
     cout << 4*vectors[0] << endl;
     cout << "Bracket: " << endl;
     cout << vectors[0][0] << endl;
+    cout << "Dot Product: " << endl;
+    cout << vectors[0] * vectors[1] << endl;
   }
   else // If file isn't open
   {
