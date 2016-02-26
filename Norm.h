@@ -27,7 +27,7 @@ class Norm
 {
 public:
   template <typename T>
-    long double operator ()(const Vector<T>& v, long p) const;
+     long double operator ()(const Vector<T>& v, long p) const;
 };
 
 #include "norm.hpp"

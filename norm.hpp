@@ -12,10 +12,10 @@
 #include <cmath>
 
 template <typename T>
-long double Norm::operator()(const Vector <T> &v, long p) const
+long double Norm::operator()(const Vector<T> &v, long p) const
 {
   long double sum = 0;
-  for(unsigned long i = 0; i < v.size(); i++)
+  for(unsigned long i = 0; i < v.capacity(); i++)
   {
     sum += pow(abs(v[i]), p);
   }

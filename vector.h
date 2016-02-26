@@ -160,10 +160,10 @@ public:
   unsigned long size() const;
   unsigned long capacity() const;
 
-  // Helpers
-
   // Operators
+  Vector<T>& operator =(const Vector<T>& other);
   T operator [](int index) const;
+  T& operator [](int index);
   friend Vector<T> operator + <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend Vector<T> operator - <>(const Vector<T>& lhs, const Vector<T>& rhs);
   friend T operator * <>(const Vector<T>& lhs, const Vector<T>& rhs);

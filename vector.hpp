@@ -36,6 +36,10 @@ Vector<T>::Vector(unsigned long size)
   this->m_capacity = size;
   this->m_size = 0;
   this->m_elements = new (nothrow) T[this->m_capacity];
+  for(unsigned long i = 0; i < this->m_capacity; i++)
+  {
+    this->m_elements[i] = 0;
+  }
 }
 
 template <typename T>
@@ -57,25 +61,41 @@ unsigned long Vector<T>::capacity() const
 }
 
 template <typename T>
+Vector<T>& Vector<T>::operator =(const Vector<T> &other)
+{
+  if(this != &other)
+  {
+    if(this->m_elements != nullptr)
+    {
+      delete[] this->m_elements;
+    }
+    this->m_elements = new (nothrow) T[other.m_capacity];
+
+    for(unsigned long i = 0; i < this->m_capacity; i++)
+    {
+      this->m_elements[i] = other.m_elements[i];
+    }
+  }
+  return *this;
+}
+
+template <typename T>
 T Vector<T>::operator [](int index) const
 {
-  if(this->m_size <= index)
-  {
-    cerr << "Out of bounds on [] operator." << endl;
-  }
+  return this->m_elements[index];
+}
 
+template <typename T>
+T& Vector<T>::operator[](int index)
+{
   return this->m_elements[index];
 }
 
 template <typename T>
 Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 {
-  if(lhs.m_size != rhs.m_size)
-  {
-    cerr << "Sizes not equal for + operator." << endl;
-  }
   Vector<T> ret(lhs);
-  for(unsigned long i = 0; i < ret.m_size; i++)
+  for(unsigned long i = 0; i < ret.m_capacity; i++)
   {
     ret.m_elements[i] += rhs.m_elements[i];
   }
@@ -86,12 +106,8 @@ Vector<T> operator +(const Vector<T>& lhs, const Vector<T>& rhs)
 template <typename T>
 Vector<T> operator -(const Vector<T>& lhs, const Vector<T>& rhs)
 {
-  if(lhs.m_size != rhs.m_size)
-  {
-    cerr << "Sizes not equal for - operator." << endl;
-  }
   Vector<T> ret(lhs);
-  for(unsigned long i = 0; i < ret.m_size; i++)
+  for(unsigned long i = 0; i < ret.m_capacity; i++)
   {
     ret.m_elements[i] -= rhs.m_elements[i];
   }
@@ -103,7 +119,7 @@ template <typename T>
 T operator *(const Vector<T>& lhs, const Vector<T>& rhs)
 {
   T ret = 0;
-  for(unsigned long i = 0; i < lhs.m_size; i++)
+  for(unsigned long i = 0; i < lhs.m_capacity; i++)
   {
     ret += lhs.m_elements[i] * rhs.m_elements[i];
   }
@@ -115,7 +131,7 @@ template <typename T>
 Vector<T> operator *(double c, const Vector<T>& rhs)
 {
   Vector<T> ret(rhs);
-  for(unsigned long i = 0; i < ret.m_size; i++)
+  for(unsigned long i = 0; i < ret.m_capacity; i++)
   {
     ret.m_elements[i] *= c;
   }
@@ -127,9 +143,9 @@ Vector<T> operator *(double c, const Vector<T>& rhs)
 template <typename T>
 ostream& operator <<(ostream& out, const Vector<T> &rhs)
 {
-  for(unsigned long i = 0; i < rhs.m_size; i++)
+  for(unsigned long i = 0; i < rhs.m_capacity; i++)
   {
-    out << rhs.m_elements[i] << " ";
+    out << rhs.m_elements[i] << endl;
   }
 
   return out;
