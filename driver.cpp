@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include "vector.h"
+#include "norm.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ int main(int argc, char* argv[])
   int dimensionSize;
   vector<Vector<int> > vectors;
   Vector<int> * tempVector;
+  Norm n;
 
   // Start going through file
   if (inputFile.is_open())
@@ -64,6 +66,10 @@ int main(int argc, char* argv[])
     cout << vectors[0][0] << endl;
     cout << "Dot Product: " << endl;
     cout << vectors[0] * vectors[1] << endl;
+    cout << "Norm 1:" << endl;
+    cout << n(vectors[0], 1) << endl;
+    cout << "Norm 2:" << endl;
+    cout << n(vectors[0], 2) << endl;
   }
   else // If file isn't open
   {
