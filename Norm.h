@@ -10,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
-/// @fn double Norm::operator ()(const Vector<T> &pf, long p) const
+/// @fn double Norm::operator ()(const Vector<T> &v, long p) const
 /// @brief Overloads the () operator to act as a function class.
 /// @pre The type of T should be resolvable to a float. Vector should have a [] operator.
 /// @post Returns p-norm
